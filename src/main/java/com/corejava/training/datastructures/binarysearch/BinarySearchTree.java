@@ -111,12 +111,13 @@ public class BinarySearchTree {
 
     void printInorder(){
         printInorderRec(root);
+        System.out.println();
     }
 
     private void printInorderRec(Node root) {
         if(root!=null){
             printInorderRec(root.left);
-            System.out.println(root.key);
+            System.out.print(root.key+"   ");
             printInorderRec(root.right);
         }
     }
@@ -152,17 +153,16 @@ public class BinarySearchTree {
 
         // print inorder traversal of the BST
         tree.printInorder();
-        int searchKey= 100;
+        int searchKey= 101;
         Node searchNode = tree.search(searchKey);
-        if(searchNode==null){
-            System.out.println("Given Key is Not found  :"+searchKey);
-        }else{
-            System.out.println("Key Found");
-        }
-
-        //Delete Node
-        tree.delete(100);
         System.out.println("Is Key Found: "+tree.isKeyFound);
+        tree.delete(searchKey);
+        if(tree.isKeyFound){
+            System.out.println("Deletion of Node Successful");
+
+        }else{
+            System.out.println("Delete Operation is Not Successful, Hence no change in tree strucuture");
+        }
         tree.printInorder();
     }
 
